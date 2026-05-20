@@ -1,23 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BGM</title>
+<style>
+body{
+  margin:0;
+  background:transparent;
+}
+button{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:black;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
 <audio id="bgm" loop>
   <source src="Main Menu Wii Party Music Extended.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="toggleMusic()">🔊</button>
+<button id="musicBtn">🔊</button>
 
 <script>
-let music = document.getElementById("bgm");
+const music = document.getElementById("bgm");
+const btn = document.getElementById("musicBtn");
 
-document.addEventListener("click", function(){
-  if (music.paused) {
-    music.play().catch(() => {});
+btn.addEventListener("click", function(e){
+  e.stopPropagation();
+  if(music.paused){
+    music.play();
+    btn.textContent = "🔊";
+  } else {
+    music.pause();
+    btn.textContent = "🔇";
   }
 });
 
-function toggleMusic(){
+document.body.addEventListener("click", function(){
   if(music.paused){
-    music.play();
-  } else {
-    music.pause();
+    music.play().catch(()=>{});
   }
-}
+});
 </script>
+
+</body>
+</html>
