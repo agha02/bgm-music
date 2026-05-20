@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BGM</title>
+<style>
+body{
+  margin:0;
+  background:transparent;
+}
+button{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:black;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:16px;
+}
+</style>
+</head>
+<body>
+
+<audio id="bgm" autoplay loop>
+  <source src="Main Menu Wii Party Music Extended.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="toggleMusic()">🔊</button>
+
+<script>
+let music = document.getElementById("bgm");
+
+function toggleMusic(){
+  if(music.muted){
+    music.muted = false;
+  } else {
+    music.muted = true;
+  }
+}
+
+window.addEventListener("click", function(){
+  music.muted = false;
+});
+</script>
+
+</body>
+</html>
