@@ -29,27 +29,11 @@ button{
   <source src="Main Menu Wii Party Music Extended.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn">🔊</button>
-
 <script>
 const music = document.getElementById("bgm");
-const btn = document.getElementById("musicBtn");
 
-btn.addEventListener("click", function(e){
-  e.stopPropagation();
-  if(music.paused){
-    music.play();
-    btn.textContent = "🔊";
-  } else {
-    music.pause();
-    btn.textContent = "🔇";
-  }
-});
-
-document.body.addEventListener("click", function(){
-  if(music.paused){
-    music.play().catch(()=>{});
-  }
+window.addEventListener("load", function(){
+  music.play().catch(()=>{});
 });
 </script>
 
